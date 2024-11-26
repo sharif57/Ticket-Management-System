@@ -32,11 +32,16 @@ const login = async (userData) => {
     };
 }
 
+const logout = async () => {
+    return { message: 'User logOut successfully' };
+};
+
 
 
 const userServices = {
     registration,
-    login
+    login,
+    logout
 }
 
 export default userServices;

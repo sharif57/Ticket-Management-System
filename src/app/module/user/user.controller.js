@@ -31,9 +31,22 @@ const login = async (req, res, next) => {
     }
 }
 
+const logout = async (req, res, next) => {
+    try {
+        const result = await userServices.logout(); 
+        res.status(200).json({
+            message: result.message,
+            success: true,
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
 const userController = {
     registration,
-    login
+    login,
+    logout
 }
 
 export default userController;
