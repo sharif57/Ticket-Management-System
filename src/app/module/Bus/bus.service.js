@@ -18,10 +18,24 @@ const updateBus = async (id, data) => {
 
     return result;
 };
+
+const deleteBus = async (id) => {
+
+    const deletedBus = await Bus.findByIdAndDelete(id);
+
+    return deletedBus;
+
+};
+
+const allBus = async () => {
+    return await Bus.find();
+};
  
 const busServices = {
     busPost,
-    updateBus
+    updateBus,
+    deleteBus,
+    allBus
 }
 
 export default busServices;

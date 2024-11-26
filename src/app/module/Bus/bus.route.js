@@ -8,6 +8,10 @@ const router = express.Router();
 
 router.post('/busAdd', busController.addBus);
 router.put('/busAdd/:id', busController.updateBusHandler);
+router.delete('/busAdd/:id', busController.deleteBus);
+router.get('/busAdd', busController.deleteBus);
+router.get("/buses", busController.allBus)
+
 
 const busRoute = router;
 

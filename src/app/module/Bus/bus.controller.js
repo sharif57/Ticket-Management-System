@@ -40,9 +40,36 @@ const addBus = async (req, res, next) => {
     }
 };
 
+const deleteBus = async (req, res, next) => {
+    try {
+        const deletedBus = await busServices.deleteBus(req.params.id);
+        res.status(200).json({
+            message: "Bus deleted successfully",
+            success: true
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+const allBus = async (req, res, next) => {
+    try {
+        const result = await busServices.allBus();
+        res.status(200).json({
+            message: "All users retrieved successfully",
+            success: true,
+            data: result
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
 const busController = {
     addBus,
-    updateBusHandler
+    updateBusHandler,
+    deleteBus,
+    allBus
 };
 
 export default busController;
