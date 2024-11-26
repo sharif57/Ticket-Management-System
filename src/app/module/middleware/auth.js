@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken"
-import User from "../app/module/user/user.model"
-import AppError from "../error/AppError"
+import User from "../user/user.model.js"
+import AppError from "../error/AppError.js"
 
 export const isAdmin = async (req, res, next) => {
     const token = req.headers.authorization
