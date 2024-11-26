@@ -1,9 +1,10 @@
 import jwt from "jsonwebtoken"
 import User from "../app/module/user/user.model"
+import AppError from "../error/AppError"
 
 export const isAdmin = async (req, res, next) => {
     const token = req.headers.authorization
-    const decode = jwt.verify(token, "restaurant123")
+    const decode = jwt.verify(token, "ticket123")
     const isUserExist = await User.findById(decode?.userId)
     if (!isUserExist) {
         throw new AppError(400, "user not exist")
@@ -16,7 +17,7 @@ export const isAdmin = async (req, res, next) => {
     next()
 }
 
-export const isCustomer = async (req, res, next) => {
+export const isUser = async (req, res, next) => {
     const token = req.headers.authorization
     const decode = jwt.verify(token, "ticket123")
     const isUserExist = await User.findById(decode?.userId)
