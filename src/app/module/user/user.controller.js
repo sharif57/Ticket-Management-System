@@ -18,10 +18,12 @@ const registration = async (req, res, next) => {
 const login = async (req, res, next) => {
     try {
         const result = await userServices.login(req.body)
+        const { password, ...others } = result?.data.toObject()
         res.status(200).json({
             message: 'user login  successfully',
             success: true,
-            data: result
+            data: others,
+            token: result?.token
         })
     } catch (error) {
         // console.log(error)
@@ -29,7 +31,7 @@ const login = async (req, res, next) => {
     }
 }
 
-const userController ={
+const userController = {
     registration,
     login
 }
