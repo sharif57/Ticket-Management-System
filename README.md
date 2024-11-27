@@ -5,7 +5,9 @@
 # Authentication APIs
 
 POST register: http://localhost:5000/api/users/
+
 POST auth/login: http://localhost:5000/api/users/login
+
 POST auth/logout: http://localhost:5000/api/users/logout
 
 # Bus Api end points 
