@@ -1,5 +1,4 @@
 
-
 import express from "express";
 import busController from "./bus.controller.js";
 // import { isAdmin } from "../middleware/auth.js";
