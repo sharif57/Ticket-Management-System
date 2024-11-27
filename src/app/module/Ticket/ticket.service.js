@@ -22,6 +22,18 @@ const deleteTicket = async (id) => {
 
 };
 
+// const ticketPost = async (data) => {
+//     const result = await Ticket.create(data);
+//     return result;
+// };
+
+const ticketPost = async (ticketData) => {
+    // Create a new bus and save it to the database
+    const data = new Ticket(ticketData);
+    return await data.save();
+};
+
+
 const allTicket = async () => {
     return await Ticket.find();
 };
@@ -29,7 +41,8 @@ const allTicket = async () => {
 const ticketServices = {
     updateTicket,
     deleteTicket,
-    allTicket
+    allTicket,
+    ticketPost
 }
 
 export default ticketServices;

@@ -2,26 +2,18 @@ import Bus from "../Bus/bus.modal.js";
 import Ticket from "./ticket.modal.js";
 import ticketServices from "./ticket.service.js";
 
-const createTicket = async (req, res, next) => {
+
+
+const addTicket = async (req, res, next) => {
     try {
-        const { busId, price, time, availableSeats } = req.body;
-
-        const bus = await Bus.findById(busId);
-        if (!bus) {
-            return res.status(404).json({ message: 'Bus not found' });
-        }
-
-        const newTicket = new Ticket({
-            bus: busId,
-            price,
-            time,
-            availableSeats,
+        const result = await ticketServices.ticketPost(req.body);
+        res.status(201).json({
+            message: 'New Ticket added successfully',
+            success: true,
+            data: result,
         });
-
-        await newTicket.save();
-        res.status(201).json({ message: 'Ticket created successfully', ticket: newTicket });
     } catch (error) {
-        next(error)
+        next(error); 
     }
 };
 
@@ -73,7 +65,7 @@ const allTicket = async (req, res, next) => {
 };
 
 const ticketController = {
-    createTicket,
+    addTicket,
     updateTicketHandler,
     deleteTicket,
     allTicket

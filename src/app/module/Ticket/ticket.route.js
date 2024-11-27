@@ -5,12 +5,10 @@ import { isAdmin, isUser } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.post('/ticket',isAdmin, ticketController.createTicket);
-router.put('/ticket/:id',isAdmin, ticketController.updateTicketHandler);
-router.delete('/ticket/:id',isAdmin, ticketController.deleteTicket);
-router.get('/ticket',isUser, ticketController.allTicket);
-
-
+router.post('/ticket', isAdmin, ticketController.addTicket);
+router.put('/ticket/:id', isAdmin, ticketController.updateTicketHandler);
+router.delete('/ticket/:id', isAdmin, ticketController.deleteTicket);
+router.get('/ticket', isUser, ticketController.allTicket);
 
 
 
