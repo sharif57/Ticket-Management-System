@@ -1,5 +1,6 @@
 import Bus from "../Bus/bus.modal.js";
 import Ticket from "./ticket.modal.js";
+import ticketServices from "./ticket.service.js";
 
 const createTicket = async (req, res, next) => {
     try {
@@ -25,8 +26,31 @@ const createTicket = async (req, res, next) => {
 };
 
 
+const updateTicketHandler = async (req, res, next) => {
+    const id = req.params.id;
+    const data = req.body;
+
+    try {
+        const result = await ticketServices.updateTicket(id, data);
+
+        if (!result) {
+            return res.status(404).json({ error: 'ticket not found' });
+        }
+
+        res.status(200).json({
+            message: 'ticket information updated successfully',
+            result,
+        });
+    } catch (error) {
+        console.error(error);
+        next(error); 
+    }
+};
+
+
 const ticketController = {
-    createTicket
+    createTicket,
+    updateTicketHandler
 };
 
 export default ticketController;
