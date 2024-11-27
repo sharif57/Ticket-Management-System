@@ -14,8 +14,17 @@ const updateTicket = async (id, data) => {
     return result;
 };
 
+const deleteTicket = async (id) => {
+
+    const deletedTicket = await Ticket.findByIdAndDelete(id);
+
+    return deletedTicket;
+
+};
+
 const ticketServices = {
-    updateTicket
+    updateTicket,
+    deleteTicket
 }
 
 export default ticketServices;

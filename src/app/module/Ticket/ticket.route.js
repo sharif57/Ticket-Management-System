@@ -7,6 +7,8 @@ const router = express.Router();
 
 router.post('/ticket',ticketController.createTicket);
 router.put('/ticket/:id', ticketController.updateTicketHandler);
+router.delete('/ticket/:id', ticketController.deleteTicket);
+
 
 
 

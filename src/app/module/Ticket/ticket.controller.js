@@ -47,10 +47,22 @@ const updateTicketHandler = async (req, res, next) => {
     }
 };
 
+const deleteTicket = async (req, res, next) => {
+    try {
+        const deletedBus = await ticketServices.deleteTicket(req.params.id);
+        res.status(200).json({
+            message: "Ticket deleted successfully",
+            success: true
+        });
+    } catch (error) {
+        next(error);
+    }
+};
 
 const ticketController = {
     createTicket,
-    updateTicketHandler
+    updateTicketHandler,
+    deleteTicket
 };
 
 export default ticketController;
