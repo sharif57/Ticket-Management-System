@@ -1,13 +1,14 @@
 
 import express from "express";
 import ticketController from "./ticket.controller.js";
-// import { isAdmin } from "../middleware/auth.js";
+import { isAdmin, isUser } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.post('/ticket',ticketController.createTicket);
-router.put('/ticket/:id', ticketController.updateTicketHandler);
-router.delete('/ticket/:id', ticketController.deleteTicket);
+router.post('/ticket',isAdmin, ticketController.createTicket);
+router.put('/ticket/:id',isAdmin, ticketController.updateTicketHandler);
+router.delete('/ticket/:id',isAdmin, ticketController.deleteTicket);
+router.get('/ticket',isUser, ticketController.allTicket);
 
 
 

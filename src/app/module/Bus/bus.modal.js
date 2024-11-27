@@ -15,7 +15,7 @@ const busSchema = new Schema({
         required: true,
     },
     arrivalTime: {
-        type: [String], // e.g., ["08:00 AM", "02:00 PM"]
+        type: [String], //  ["08:00 AM", "02:00 PM"]
         required: true,
     },
 }, { timestamps: true });

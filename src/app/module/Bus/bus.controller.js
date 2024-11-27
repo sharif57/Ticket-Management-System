@@ -1,6 +1,5 @@
 
 
-import Bus from "./bus.modal.js";
 import busServices from "./bus.service.js";
 
 

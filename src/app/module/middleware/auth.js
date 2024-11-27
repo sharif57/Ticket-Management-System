@@ -5,6 +5,7 @@ import AppError from "../error/AppError.js"
 export const isAdmin = async (req, res, next) => {
     const token = req.headers.authorization
     const decode = jwt.verify(token, "ticket123")
+    // console.log(decode)
     const isUserExist = await User.findById(decode?.userId)
     if (!isUserExist) {
         throw new AppError(400, "user not exist")

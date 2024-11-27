@@ -59,10 +59,24 @@ const deleteTicket = async (req, res, next) => {
     }
 };
 
+const allTicket = async (req, res, next) => {
+    try {
+        const result = await ticketServices.allTicket();
+        res.status(200).json({
+            message: "All ticket get successfully",
+            success: true,
+            data: result
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
 const ticketController = {
     createTicket,
     updateTicketHandler,
-    deleteTicket
+    deleteTicket,
+    allTicket
 };
 
 export default ticketController;

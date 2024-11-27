@@ -22,9 +22,14 @@ const deleteTicket = async (id) => {
 
 };
 
+const allTicket = async () => {
+    return await Ticket.find();
+};
+
 const ticketServices = {
     updateTicket,
-    deleteTicket
+    deleteTicket,
+    allTicket
 }
 
 export default ticketServices;

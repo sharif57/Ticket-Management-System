@@ -23,7 +23,8 @@ const login = async (userData) => {
 
     const userObj = {
         email: isUserExits?.email,
-        role: isUserExits.role
+        role: isUserExits.role,
+        userId:isUserExits?._id
     }
     const token = jwt.sign(userObj, 'ticket123', { expiresIn: '7d' })
     return {
